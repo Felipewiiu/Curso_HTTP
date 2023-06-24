@@ -166,6 +166,6 @@ Depois, instalamos o pacote que dá suporte ao HTTP/2 no NodeJS:
 npm install spdy
 ```
 
-## Protocolo QUIC ou evolução do HTTP 3
+## Protocolo QUIC ou evolução para HTTP 3
 
 O HTTP/3 melhora ainda mais o desempenho do HTTP e as suas principais mudanças não são na camada de aplicação (onde roda o HTTP), mas sim na camada de transporte.
