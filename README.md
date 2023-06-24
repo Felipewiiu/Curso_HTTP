@@ -124,3 +124,48 @@ Cada início de número quer dizer um tipo de status request
 O openssl é um programa de criptografia que permite entre outras coisas gerar chaves privadas e certificados digitais.
 
 > Link para dowunload `https://slproweb.com/products/Win32OpenSSL.html`
+
+## Formatos dos dados
+
+O formato dos dados ele é determinado pelo cabeçalho, content type -- formato do corpo
+
+```
+server.get('/public/docs', (req, res) => {
+  const meuHtml = `
+     <h1>Documentação da API</h1>
+     <ul>
+            <li>GET /livros</li>
+            <li>POST /livros</li>
+            <li>GET /categorias</li>
+     </ul>
+    `
+    res.status(200).contentType("text/html").send(meuHtml)
+})
+
+```
+
+
+##  Protocolo SPDY -- http2
+
+O SPDY foi projetado para substituir o HTTP como o protocolo de transferência de hipertexto padrão. Ele introduziu várias melhorias em relação ao HTTP, como compressão de cabeçalhos, multiplexação de solicitações e respostas em uma única conexão, priorização de solicitações e suporte a fluxos bidirecionais. Essas melhorias visam reduzir a latência e melhorar o desempenho geral das páginas da web.
+
+No entanto, é importante observar que o SPDY foi descontinuado pelo Google em favor do HTTP/2, que foi desenvolvido com base no SPDY e incorporou suas principais funcionalidades. O HTTP/2 é amplamente adotado e suportado pelos navegadores e servidores web modernos.
+
+
+## Passos para a configuração do Http2  do servidor
+
+Primeiro, precisamos do certificado digital e da chave privada (note que nós já geramos esses itens para o backend, mas para o frontend ainda não).
+
+```
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
+```
+
+Depois, instalamos o pacote que dá suporte ao HTTP/2 no NodeJS:
+
+```
+npm install spdy
+```
+
+## Protocolo QUIC ou evolução do HTTP 3
+
+O HTTP/3 melhora ainda mais o desempenho do HTTP e as suas principais mudanças não são na camada de aplicação (onde roda o HTTP), mas sim na camada de transporte.
