@@ -59,7 +59,7 @@ O HTTP é um protocolo da camada de aplicação do modelo OSI. Por falar em prot
 
 ## Postman
 
-Desdrição:
+Descrição:
 
 ### Sobre o servidor
 
